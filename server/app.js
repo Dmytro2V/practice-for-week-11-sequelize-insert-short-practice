@@ -25,6 +25,25 @@ app.get('/puppies', async (req, res, next) => {
 // Respond to the request by sending a success message
 app.post('/puppies', async (req, res, next) => {
     // Your code here
+    try {
+        // Your code here
+        const createdPuppy = await Puppy.create({
+            name: req.body.name,
+            age_yrs: req.body.age_yrs,
+            weight_lbs: req.body.weight_lbs,
+            breed: req.body.breed,
+            microchipped: req.body.microchipped
+        });
+       
+        res.json({
+            message: 'Record succesfully saved',
+            data: createdPuppy
+        });
+      } catch (err) {
+        console.error(err)
+      }
+
+
 })
 
 
